@@ -1,6 +1,6 @@
 # s21_cleaner
 
-![s21_cleaner](materials/clean_your_memory.jpg)
+![s21_cleaner](https://content-7.foto.my.mail.ru/community/imperia.smexa/_groupsphoto/h-19126.jpg)
 
 
 ## Описание
