@@ -1,11 +1,12 @@
-# s21_cleaner
+# s21_helper
 
 ![s21_cleaner](https://content-7.foto.my.mail.ru/community/imperia.smexa/_groupsphoto/h-19126.jpg)
 
 ## Description
 
-The s21_cleaner script provides a set of functions for managing and optimizing storage space on iMac. It includes options for memory cleaning, displaying memory information, installing Homebrew, and updating Homebrew.  
-The script aims to simplify the memory management and storage optimization process on iMac at School21.
+The s21_helper script provides a set of functions for managing and optimizing storage space on iMac.  
+It includes options for memory cleaning, displaying memory information, installing Homebrew, and updating Homebrew.  
+The script aims to simplify the memory management and storage optimization process on iMac at School21.  
 
 ## Instructions
 
