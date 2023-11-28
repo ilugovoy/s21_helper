@@ -18,11 +18,12 @@ The script aims to simplify the memory management and storage optimization proce
 
 ## Usage
 
-To use the script, follow these steps:
-
-1. **Memory Cleaning:** Choose this option to start the memory cleaning process. The script will perform various operations to clean up memory, including removing unnecessary files, caches, temporary data, and unused Docker sources to free up space.
-2. **Memory Information:** This option provides details about the current memory status, including statistics on available space and usage.
-3. **Homebrew Installation:** Use this option to install Homebrew - a package manager for macOS.
-4. **Homebrew Update:** Choose this option to update the Homebrew package manager to the latest version.
+To use the script, follow these steps: 
+| № | Function | Description |
+| -- | ------- | -------- |
+| 1. | Memory Cleaning: | The script will perform various operations to clean up memory, including removing unnecessary files, caches, temporary data, and unused Docker sources to free up space. |
+| 2. | Memory Information: | This option provides details about the current memory status, including statistics on available space and usage. |
+| 3. | Homebrew Installation: | Use this option to install Homebrew - a package manager for macOS. |
+| 4. | Homebrew Update: | Choose this option to update the Homebrew package manager to the latest version. |
 
 ***Note: Make sure you have necessary permissions to run the script.***
