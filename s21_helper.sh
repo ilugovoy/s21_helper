@@ -4,19 +4,21 @@ BLUE=$'\033[0;34m'
 RED=$'\033[0;31m'
 RESET=$'\033[0;m'
 
-
+# Функция для получения информации о свободном месте на диске перед началом операций
 get_initial_space_info() {
 
     initial_df=$(df -h . | grep --color=always -E "Size|Used|Avail|Capacity|[0-9]*\.*[0-9]*Mi|[0-9]*\.*[0-9]*Gi|[0-9]+\.*[0-9]+% |$")
     echo -e "${RED}Current space:\n${RESET}${initial_df}${RESET}"
 }
 
+# Функция для получения начального использованного места перед операциями
 get_initial_space_usage() {
 
     initial_used_space=$(df -h $HOME | grep -v 'Filesystem' | awk '{ printf("%f", $3) }')
     before=$(df -h . | grep --color=always -E "Size|Used|Avail|Capacity|[0-9]*\.*[0-9]*Mi|[0-9]*\.*[0-9]*Gi|[0-9]+\.*[0-9]+% |$")
 }
 
+# Функция вывода информации о домашней папке
 echo_home_folder_info() {
 
     echo -e $RED"\nHome folder:"$RESET
@@ -27,6 +29,7 @@ echo_home_folder_info() {
     df -h | grep Users | awk '{print $2 " = " $3 " + "  $4}'
 }
 
+# Функция для очистки локальных файлов
 clean_local_files() {
 
 	rm -rfv ~/Desktop/Presentation.pdf
@@ -38,6 +41,7 @@ clean_local_files() {
 	rm -rfv ~/Music/*
 }
 
+# Функция для очистки кеша приложений Apple
 clean_apple_cache() {
 	
 	rm -rfv ~/Library/Caches/com.apple.preferencepanes.searchindexcache
@@ -63,6 +67,7 @@ clean_apple_cache() {
     rm -rfv ~/Library/Caches/storeassetd
 }
 
+# Функция для очистки неиспользуемых источников Docker
 clean_unused_docker_sources() {
 
     rm -rfv ~/Library/Containers/com.docker.docker/Data/vms/*
@@ -71,6 +76,7 @@ clean_unused_docker_sources() {
 	find /var/lib/docker/image -type f -atime +30 -delete
 }
 
+# Функция для очистки временных файлов в VSCode
 clean_vscode_temp() {
 
 	rm -rfv ~/Library/Application\ Support/Code/Service\ Worker/CacheStorage
@@ -80,6 +86,7 @@ clean_vscode_temp() {
 	rm -rfv ~/Library/Application\ Support/Code/Cache*
 }
 
+# Функция для очистки временных файлов браузеров хром и сафари
 clean_browser_temp() {
 
 	rm -rfv ~/Library/Application\ Support/Google/Chrome/Default/Service\ Worker/CacheStorage/*
@@ -93,6 +100,7 @@ clean_browser_temp() {
 	rm -rfv ~/Library/Safari/*
 }
 
+# Функция для очистки временных файлов рокет чата
 clean_rocket_chat_cache() {
 
 	rm -rfv ~/Library/Containers/chat.rocket/Service Worker/CacheStorage
@@ -101,6 +109,7 @@ clean_rocket_chat_cache() {
 	rm -rfv ~/Library/Containers/chat.rocket/Data
 }
 
+# Функция для получения информации о свободном месте на диске после операций
 get_final_space_info() {
 
 	echo -e "${BLUE}Current space:\n${RESET}${initial_df}${RESET}"
@@ -108,6 +117,7 @@ get_final_space_info() {
     du -hd1 . 2>/dev/null | sort -h | grep --color=always "[0-9]*\.*[0-9]*M\t\|[0-9]*\.*[0-9]*G\t\|$"
 }
 
+# Функция для вывода информации до и после очистки
 clean_result() {
     echo -e "${RED}Before cleaning:${RESET}"
     echo '----------------------'
@@ -174,7 +184,7 @@ update_homebrew() {
     echo 'Choose your option:'
     echo --------------------------------
     echo 1 - math, string+, decimal, matrix
-    echo 2 - calculator_1
+    echo 2 - calculator_1 на QT
     echo 3 - All
     echo q - Quit
     echo --------------------------------
@@ -182,19 +192,25 @@ update_homebrew() {
     read package_option
     case $package_option in
         1)
+			brew install clang-format
             brew install check
             brew install lcov
             ;;
         2)
-            brew install gtk+3
-            brew install adwaita-icon-theme
+            brew install tar
+			brew install qt
+			brew install doxygen
+			brew install graphviz
+			brew install --cask qt-creator
             ;;
         3)
             brew install check
             brew install lcov
-            brew install gtk+3
-            brew install adwaita-icon-theme
-            brew install clang-format
+            brew install tar
+			brew install qt
+			brew install doxygen
+			brew install graphviz
+			brew install --cask qt-creator
             ;;
         q)
             ;;
@@ -210,6 +226,7 @@ update_homebrew() {
     echo DONE
 }
 
+# Создает меню для пользователя, чтобы выбрать задачу
 show_menu() {
 
     clear && sleep 0.1
@@ -224,6 +241,7 @@ show_menu() {
     echo --------------------------------
 }
 
+# Функция для обработки выбора пользователя
 handle_user_choice() {
 
     read OPTION
@@ -249,10 +267,11 @@ handle_user_choice() {
     fi
 }
 
-
+# Вызов функций меню и обработки выбора пользователя
 show_menu
 handle_user_choice
 
+# Обработка выбора пользователя
 case $OPTION in
     1) clear_space ;;
     2) memory_stats ;;
